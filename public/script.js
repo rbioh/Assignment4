@@ -32,8 +32,8 @@ search.addEventListener('click', async(e)=>{
         // console.log(await response.json());
         const bread = await response.json();
         console.log(bread)
-        if(bread.code === 404){
-            container.innerHTML = `<h1>${value} is not in breed database</h1>`
+        if(bread == "404"){
+            container.innerHTML = `<h1>${value} is not in my database</h1>`
         }else{
             let index = 0;
             let htmlContainer = `<div id='img-container'><img id="dreed-img" src="${bread[index]}" alt=""></div>pl<h1>${value}</h1>`;

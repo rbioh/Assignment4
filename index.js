@@ -24,8 +24,13 @@ app.get("/breed",  (req, res)=>{
 
 app.get("/image/:breed", (req, res)=>{
     const breed = req.params.breed;
-    console.log("err: ",breedDB[breed])
-    res.send(breedDB[breed])
+    if(breed in breedDB){
+        console.log(breedDB[breed])
+        res.send(breedDB[breed])
+    }else{
+        res.send("404")
+    }
+    
 })
 
 app.all("*", (req, res)=>{
