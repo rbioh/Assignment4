@@ -4,16 +4,16 @@ const app = express();
 const port = 5050;
 
 const breedDB = {
-    husky: [...Array(5)].map((_, x) => `husky${x+1}.jpg`),
-    kombai: [...Array(5)].map((_, x) => `kombai${x+1}.jpg`),
-    mastiff: [...Array(5)].map((_,x)=> `mastiff${x+1}.jpg`),
-    pitbull: [...Array(5)].map((_, x)=> `pitbull${x+1}.jpg`),
-    poodle: [...Array(5)].map((_, x)=> `poodle${x+1}.jpg`),
-    redbone: [...Array(5)].map((_, x)=> `redbone${x+1}.jpg`),
-    spitz: [...Array(5)].map((_, x)=> `spitz${x+1}.jpg`),
-    sheepdog: [...Array(5)].map((_, x)=> `sheepdog${x+1}.jpg`),
-    bulldog: [...Array(5)].map((_, x)=> `bulldog${x+1}.jpg`),
-    boxer: [...Array(5)].map((_, x)=> `boxer${x+1}.jpg`)
+    husky: [...Array(5)].map((_, x) => `./images/husky${x+1}.jpg`),
+    kombai: [...Array(5)].map((_, x) => `./images/kombai${x+1}.jpg`),
+    mastiff: [...Array(5)].map((_,x)=> `./images/mastiff${x+1}.jpg`),
+    pitbull: [...Array(5)].map((_, x)=> `./images/pitbull${x+1}.jpg`),
+    poodle: [...Array(5)].map((_, x)=> `./images/poodle${x+1}.jpg`),
+    redbone: [...Array(5)].map((_, x)=> `./images/redbone${x+1}.jpg`),
+    spitz: [...Array(5)].map((_, x)=> `./images/spitz${x+1}.jpg`),
+    sheepdog: [...Array(5)].map((_, x)=> `./images/sheepdog${x+1}.jpg`),
+    bulldog: [...Array(5)].map((_, x)=> `./images/bulldog${x+1}.jpg`),
+    boxer: [...Array(5)].map((_, x)=> `./images/boxer${x+1}.jpg`)
 }
 
 app.use(express.static("public"));
@@ -24,7 +24,8 @@ app.get("/breed",  (req, res)=>{
 
 app.get("/image/:breed", (req, res)=>{
     const breed = req.params.breed;
-    console.log(breed)
+    console.log("err: ",breedDB[breed])
+    res.send(breedDB[breed])
 })
 
 app.all("*", (req, res)=>{

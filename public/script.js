@@ -26,22 +26,22 @@ inputfield.addEventListener('input', async () => {
 
 search.addEventListener('click', async(e)=>{
     e.preventDefault();
-    const {value} = inputfield 
+    const {value} = inputfield;
     try{
-        const response = await fetch(`https://dog.ceo/api/breed/${value}/images`);
+        const response = await fetch(`/image/${value}`);
         // console.log(await response.json());
         const bread = await response.json();
-        console.log(bread.message)
+        console.log(bread)
         if(bread.code === 404){
-            container.innerHTML = `<h1>${value} doesn't exsit</h1>`
+            container.innerHTML = `<h1>${value} is not in breed database</h1>`
         }else{
             let index = 0;
-            let htmlContainer = `<div id='img-container'><img id="dreed-img" src="${bread.message[index]}" alt="${value}"></div><h1>${value}</h1>`;
+            let htmlContainer = `<div id='img-container'><img id="dreed-img" src="${bread[index]}" alt=""></div>pl<h1>${value}</h1>`;
             container.innerHTML = htmlContainer;
             setInterval(()=>{
-                index = Math.floor(Math.random() * bread.message.length) + 1;
+                index = Math.floor(Math.random() * bread.length) + 1;
                 console.log(index);
-                container.innerHTML = `<div id='img-container'><img id="dreed-img" src="${bread.message[index]}" alt="${value}"></div><h1>${value}</h1>`;
+                container.innerHTML = `<div id='img-container'><img id="dreed-img" src="${bread[index]}" alt="${value}"></div><h1>${value}</h1>`;
             },5000)
             
         }
